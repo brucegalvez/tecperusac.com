@@ -1,0 +1,24 @@
+body {
+  padding: 0;
+  background-color: black;
+  color: white;
+}
+body p {
+  font-family: "Roboto";
+}
+body h1,
+body h2,
+body h3 {
+  font-family: "Montserrat", sans-serif;
+}
+body .masthead {
+  background: url(../imagenes/portada1.jpg);
+  background-size: cover;
+}
+body .masthead .backdrop {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: grayscale(0.5);
+}
+body .masthead .logo {
+  height: 30rem;
+}
