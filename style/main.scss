@@ -14,19 +14,22 @@ body {
   }
 
   .masthead {
-    background: url(../imagenes/portada1.jpg);
+    background: url(../images/portada1.jpg);
     background-size: cover;
-
 
     .backdrop {
       background: rgba(255, 255, 255, 0.5);
       backdrop-filter: grayscale(0.5);
     }
 
-
-
     .logo {
       height: 30rem;
     }
   }
+}
+.bosr {
+  border: 1px solid red;
+}
+.bosc {
+  border: 1px solid red;
 }
