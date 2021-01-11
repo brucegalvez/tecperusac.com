@@ -1,35 +1,235 @@
+@mixin sm {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+@mixin md {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (max-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin background-attachment-fixed {
+  @supports (-webkit-touch-callout: none) {
+    .selector {
+      background-attachment: scroll;
+    }
+  }
+
+  @supports not (-webkit-touch-callout: none) {
+    .selector {
+      background-attachment: fixed;
+    }
+  }
+}
+
 body {
   padding: 0;
-  background-color: black;
+  background-color: #191919;
   color: white;
-
+  font-family: "Roboto", "Arial", "Helvetica", "sans-serif";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
   p {
-    font-family: "Roboto";
+    margin: 0;
   }
-
   h1,
   h2,
-  h3 {
-    font-family: "Montserrat", sans-serif;
+  h3,
+  h4 {
+    font-family: "Montserrat", "Arial", "Helvetica", "sans-serif";
+    margin-top: 0;
   }
-
-  .masthead {
-    background: url(../images/portada1.jpg);
-    background-size: cover;
-
-    .backdrop {
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: grayscale(0.5);
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  a {
+    text-decoration: none;
+    color: #52bfa7;
+  }
+  h2 {
+    font-size: 4rem;
+    @include sm {
+      font-size: 3rem;
     }
+  }
+  h3,
+  h4 {
+    font-size: 2rem;
+  }
+  // * {
+  //   border: 1px solid red;
+  // }
+}
 
+section {
+  padding: 8rem calc(50% - 40rem);
+  @include lg {
+    padding: 8rem 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
+.header {
+  width: 100%;
+  background-image: url("../../assets/images/portada1.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  .backdrop {
+    padding: 8rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: contrast(0.75);
+    position: relative;
+    > .top {
+      width: 80rem;
+      padding: 1rem;
+      justify-content: flex-end;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      display: flex;
+      @include lg {
+        width: calc(100% - 2rem);
+      }
+      .phone {
+        font-family: "Montserrat", "Arial", "Helvetica", "sans-serif";
+      }
+    }
     .logo {
-      height: 30rem;
+      height: 16rem;
+      margin-bottom: 2rem;
+      @include sm {
+        height: 8rem;
+      }
     }
   }
 }
-.bosr {
-  border: 1px solid red;
+
+.aboutUs {
+  display: flex;
+  // align-items: center;
+  @include sm {
+    flex-direction: column;
+  }
+  > h2 {
+    margin-right: 4rem;
+  }
+  > p {
+    font-size: 2rem;
+    color: #52bfa7;
+  }
 }
-.bosc {
-  border: 1px solid red;
+
+.features {
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to bottom, #191919, #52bfa7);
+  background-size: cover;
+  background-attachment: fixed;
+  > h4 {
+    @include sm {
+      text-align: center;
+    }
+  }
+  > ul {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+
+    li {
+      text-align: center;
+    }
+    li::before {
+      content: "✓ ";
+      color: white;
+    }
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.services {
+  > h2 {
+    @include sm {
+      text-align: center;
+    }
+  }
+  .cardsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    @include sm {
+      grid-template-columns: 1fr;
+    }
+    .service {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      img {
+        width: 8rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.contact {
+  background-image: linear-gradient(to bottom, #191919, #19191988),
+    url("../../assets/images/portada2.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+footer {
+  padding: 1rem 0;
+  font-size: 1rem;
+  display: flex;
+  > :nth-child(1) {
+    &::after {
+      content: "|";
+    }
+  }
+  @include sm {
+    flex-direction: column;
+    text-align: center;
+    > :nth-child(1) {
+      &::after {
+        content: "";
+      }
+    }
+  }
 }
